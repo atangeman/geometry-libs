@@ -8,13 +8,13 @@ namespace GeometryLibs.Objects.ESRI
     using Newtonsoft.Json.Serialization;
     using Newtonsoft.Json;
 
-    public class ESRIJson
+    public class EsriJson
     {
         [JsonProperty(PropertyName = "displayFieldName")]
         public string DisplayFieldName { get; set; }
 
         [JsonProperty(PropertyName = "fieldAliases")]
-        public Dictionary<string, string> FieldAliases { get; set; }
+        public IDictionary<string, string> FieldAliases { get; set; }
 
         [JsonProperty(PropertyName = "geometryType")]
         public string GeometryType { get; set; }
