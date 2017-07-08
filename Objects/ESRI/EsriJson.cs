@@ -7,6 +7,7 @@ namespace GeometryLibs.Objects.ESRI
     using System.Threading.Tasks;
     using Newtonsoft.Json.Serialization;
     using Newtonsoft.Json;
+    using System.Text;
 
     public class EsriJson
     {
@@ -27,5 +28,13 @@ namespace GeometryLibs.Objects.ESRI
 
         [JsonProperty(PropertyName = "features")]
         public List<Feature> Features { get; set; }
+
+        public IEnumerable<string> GetFeatures()
+        {
+            foreach(Feature f in Features)
+            {
+                yield return f.ToString(GeometryType);
+            }
+        }   
     }
 }
