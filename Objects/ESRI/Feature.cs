@@ -18,15 +18,18 @@ namespace GeometryLibs.Objects.ESRI
 
         public IEnumerable<IEnumerable<Coordinate2D>> ToPostGISPoly()
         {
-            foreach (List<List<double>> rr in Geometry.rings)
+            foreach (IEnumerable<IEnumerable<double>> rr in Geometry.rings)
             {
-                yield return RingConvert(rr);
+                foreach (IEnumerable<double> r in rr)
+                {
+                    yield return RingConvert(rr);
+                }
             }
         }
 
-        private IEnumerable<Coordinate2D> RingConvert(List<List<double>> dList)
+        private IEnumerable<Coordinate2D> RingConvert(IEnumerable<IEnumerable<double>> dList)
         {
-            foreach (List<double> r in dList)
+            foreach (IEnumerable<double> r in dList)
             {
                 double[] d = r.ToArray();
                 yield return new Coordinate2D(d[0], d[1]);

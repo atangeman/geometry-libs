@@ -8,6 +8,6 @@ namespace GeometryLibs.Objects.ESRI
 {
     public class Geometry
     {
-        public List<List<List<double>>> rings { get; set; }
+        public IEnumerable<IEnumerable<IEnumerable<double>>> rings { get; set; }
     }
 }
